@@ -1,0 +1,29 @@
+Sunset Sips TODO
+=================
+
+Completed
+---------
+[x] Created the initial multi-page static site structure.
+[x] Added shared CSS files for base styles, layouts, components, themes, and page-specific styling.
+[x] Added shared JavaScript files for logging, navigation, theme toggling, and contact form behavior.
+[x] Added structured data files for past events, upcoming events, reviews, and BTS content.
+[x] Added the first inquiry-only contact flow with mailto fallback for testing.
+[x] Added Past Events cards that provide more context than a Facebook timeline and link out to Facebook Reels instead of self-hosting every video.
+[x] Corrected the Past Events page script filename to js/pages/past-events-page.js.
+
+Next Tasks
+----------
+[ ] Confirm the final domain name and update sitemap.xml, robots.txt, and canonical URLs.
+[ ] Replace testing email address with Bree's final inquiry destination when ready.
+[ ] Add more compressed event thumbnails as they become available.
+[ ] Add real upcoming public events once Bree confirms what can be promoted.
+[ ] Add final review copy or screenshots after Bree approves them.
+[ ] Test the full site on mobile Safari, Chrome, and desktop before publishing.
+[ ] Deploy the first static version to Cloudflare Pages.
+[ ] Add lightweight analytics only if Bree wants traffic insights.
+
+Media Notes
+-----------
+[ ] Keep Facebook Reels as outbound links for the first version to avoid video storage and bandwidth issues.
+[ ] Only self-host short compressed MP4 files later for featured hero sections or high-value portfolio clips.
+[ ] Prefer compressed JPG/WebP thumbnails for event cards.

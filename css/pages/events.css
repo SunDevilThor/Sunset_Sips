@@ -1,0 +1,13 @@
+.events-section { padding-bottom: var(--section-padding); }
+
+.events-empty-state {
+  display: none;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.events-empty-state.is-visible { display: block; }

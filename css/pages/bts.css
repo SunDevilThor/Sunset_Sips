@@ -1,0 +1,11 @@
+.bts-section { padding-bottom: var(--section-padding); }
+
+.bts-card {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.bts-card img {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+}

@@ -1,0 +1,5 @@
+.about-story { padding-bottom: var(--section-padding); }
+
+.about-story .content-card { max-width: 860px; }
+
+.about-story p { font-size: 1.05rem; }
