@@ -11,6 +11,7 @@ Completed
 [x] Added Past Events cards that provide more context than a Facebook timeline and link out to Facebook Reels instead of self-hosting every video.
 [x] Corrected the Past Events page script filename to js/pages/past-events-page.js.
 [x] Improved the inquiry form with a visible copy-and-send fallback for browsers that do not open the Mail app from mailto links.
+[x] Changed the inquiry form to prepare the email first instead of automatically launching the mailto handler.
 
 Next Tasks
 ----------

@@ -28,15 +28,6 @@
     return `mailto:${testingEmailAddress}?${mailtoParameters.toString()}`;
   }
 
-  function openMailtoLink(mailtoUrl) {
-    const temporaryMailtoLink = document.createElement("a");
-    temporaryMailtoLink.href = mailtoUrl;
-    temporaryMailtoLink.style.display = "none";
-    document.body.appendChild(temporaryMailtoLink);
-    temporaryMailtoLink.click();
-    temporaryMailtoLink.remove();
-  }
-
   async function copyInquiryDetails(inquiryOutput, formStatus) {
     const inquiryText = inquiryOutput.value;
 
@@ -105,16 +96,15 @@
       inquiryOutput.value = `To: ${testingEmailAddress}\nSubject: ${emailSubject}\n\n${emailBody}`;
       directEmailLink.href = mailtoUrl;
       inquiryFallback.hidden = false;
-      formStatus.textContent = "Trying to open your email app. If it does not open, use the fallback box below.";
+      formStatus.textContent = "Inquiry prepared. Click Open Email App, or copy the inquiry details below.";
 
       logger?.info("Opening mailto inquiry flow with fallback details prepared.", {
         testingEmailAddress,
         eventType: formData.get("eventType"),
         eventDate: formData.get("eventDate"),
-        mailtoCharacterLength: mailtoUrl.length
+        mailtoCharacterLength: mailtoUrl.length,
+        autoOpenedMailClient: false
       });
-
-      openMailtoLink(mailtoUrl);
     });
   }
 
