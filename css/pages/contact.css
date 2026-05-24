@@ -22,6 +22,41 @@
   font-weight: 800;
 }
 
+.inquiry-fallback {
+  display: grid;
+  gap: 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  padding: 1rem;
+  background: var(--color-accent-soft);
+}
+
+.inquiry-fallback[hidden] {
+  display: none;
+}
+
+.inquiry-fallback-title {
+  margin-bottom: 0;
+  color: var(--color-heading);
+  font-weight: 800;
+}
+
+.inquiry-fallback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.inquiry-fallback-text {
+  min-height: 12rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: 0.85rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  resize: vertical;
+}
+
 @media (max-width: 820px) {
   .contact-grid { grid-template-columns: 1fr; }
 }

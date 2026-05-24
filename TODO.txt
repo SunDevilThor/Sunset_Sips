@@ -10,6 +10,7 @@ Completed
 [x] Added the first inquiry-only contact flow with mailto fallback for testing.
 [x] Added Past Events cards that provide more context than a Facebook timeline and link out to Facebook Reels instead of self-hosting every video.
 [x] Corrected the Past Events page script filename to js/pages/past-events-page.js.
+[x] Improved the inquiry form with a visible copy-and-send fallback for browsers that do not open the Mail app from mailto links.
 
 Next Tasks
 ----------

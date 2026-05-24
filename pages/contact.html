@@ -121,6 +121,15 @@
             </div>
 
             <p class="form-status" data-form-status aria-live="polite"></p>
+            <div class="inquiry-fallback" data-inquiry-fallback hidden>
+              <p class="inquiry-fallback-title">Email app did not open?</p>
+              <p>Copy the prepared inquiry below and send it manually to the testing inbox.</p>
+              <div class="inquiry-fallback-actions">
+                <a class="button button-secondary" href="mailto:thorkeane@gmail.com" data-direct-email-link>Email Testing Inbox</a>
+                <button class="button button-secondary" type="button" data-copy-inquiry>Copy Inquiry Details</button>
+              </div>
+              <textarea class="inquiry-fallback-text" data-inquiry-output readonly aria-label="Prepared inquiry email text"></textarea>
+            </div>
             <button class="button button-primary" type="submit">Prepare Inquiry Email</button>
           </form>
 

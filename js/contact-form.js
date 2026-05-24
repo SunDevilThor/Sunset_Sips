@@ -2,10 +2,6 @@
   const logger = window.SunsetSipsLogger;
   const testingEmailAddress = "thorkeane@gmail.com";
 
-  function encodeMailtoValue(value) {
-    return encodeURIComponent(value || "Not provided");
-  }
-
   function buildEmailBody(formData) {
     return [
       "New Sunset Sips inquiry:",
@@ -23,14 +19,72 @@
     ].join("\n");
   }
 
+  function buildMailtoUrl(emailSubject, emailBody) {
+    const mailtoParameters = new URLSearchParams({
+      subject: emailSubject,
+      body: emailBody
+    });
+
+    return `mailto:${testingEmailAddress}?${mailtoParameters.toString()}`;
+  }
+
+  function openMailtoLink(mailtoUrl) {
+    const temporaryMailtoLink = document.createElement("a");
+    temporaryMailtoLink.href = mailtoUrl;
+    temporaryMailtoLink.style.display = "none";
+    document.body.appendChild(temporaryMailtoLink);
+    temporaryMailtoLink.click();
+    temporaryMailtoLink.remove();
+  }
+
+  async function copyInquiryDetails(inquiryOutput, formStatus) {
+    const inquiryText = inquiryOutput.value;
+
+    if (!inquiryText) {
+      formStatus.textContent = "There are no inquiry details to copy yet.";
+      logger?.warn("Copy inquiry was requested before inquiry text existed.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(inquiryText);
+      formStatus.textContent = "Inquiry details copied. You can paste them into your email app.";
+      logger?.info("Inquiry details were copied to clipboard.");
+    } catch (clipboardError) {
+      inquiryOutput.focus();
+      inquiryOutput.select();
+      formStatus.textContent = "Copy failed automatically. Select the text box and press Command + C.";
+      logger?.error("Clipboard copy failed for inquiry details.", { clipboardError });
+    }
+  }
+
   function initializeContactForm() {
     const inquiryForm = document.querySelector("[data-inquiry-form]");
     const formStatus = document.querySelector("[data-form-status]");
+    const inquiryFallback = document.querySelector("[data-inquiry-fallback]");
+    const inquiryOutput = document.querySelector("[data-inquiry-output]");
+    const copyInquiryButton = document.querySelector("[data-copy-inquiry]");
+    const directEmailLink = document.querySelector("[data-direct-email-link]");
 
     if (!inquiryForm) {
       logger?.warn("Inquiry form was not found on this page.");
       return;
     }
+
+    if (!formStatus || !inquiryFallback || !inquiryOutput || !copyInquiryButton || !directEmailLink) {
+      logger?.error("Inquiry form fallback elements were not found. Mailto behavior may be incomplete.", {
+        hasFormStatus: Boolean(formStatus),
+        hasInquiryFallback: Boolean(inquiryFallback),
+        hasInquiryOutput: Boolean(inquiryOutput),
+        hasCopyInquiryButton: Boolean(copyInquiryButton),
+        hasDirectEmailLink: Boolean(directEmailLink)
+      });
+      return;
+    }
+
+    copyInquiryButton.addEventListener("click", () => {
+      copyInquiryDetails(inquiryOutput, formStatus);
+    });
 
     inquiryForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -39,23 +93,28 @@
       const senderEmail = formData.get("email");
 
       if (!senderEmail) {
-        formStatus.textContent = "Please add your email so Bree can respond to your inquiry.";
+        formStatus.textContent = "Please add your email so Sunset Sips can respond to your inquiry.";
         logger?.warn("Inquiry form submit was blocked because email was missing.");
         return;
       }
 
       const emailSubject = `Sunset Sips Inquiry - ${formData.get("eventType") || "New Event"}`;
       const emailBody = buildEmailBody(formData);
-      const mailtoUrl = `mailto:${testingEmailAddress}?subject=${encodeMailtoValue(emailSubject)}&body=${encodeMailtoValue(emailBody)}`;
+      const mailtoUrl = buildMailtoUrl(emailSubject, emailBody);
 
-      logger?.info("Opening mailto inquiry flow.", {
+      inquiryOutput.value = `To: ${testingEmailAddress}\nSubject: ${emailSubject}\n\n${emailBody}`;
+      directEmailLink.href = mailtoUrl;
+      inquiryFallback.hidden = false;
+      formStatus.textContent = "Trying to open your email app. If it does not open, use the fallback box below.";
+
+      logger?.info("Opening mailto inquiry flow with fallback details prepared.", {
         testingEmailAddress,
         eventType: formData.get("eventType"),
-        eventDate: formData.get("eventDate")
+        eventDate: formData.get("eventDate"),
+        mailtoCharacterLength: mailtoUrl.length
       });
 
-      formStatus.textContent = "Opening your email app with the inquiry details. Please send the email from there.";
-      window.location.href = mailtoUrl;
+      openMailtoLink(mailtoUrl);
     });
   }
 
