@@ -70,6 +70,31 @@
   object-fit: cover;
 }
 
+.page-hero-image img.image-focus-top,
+.event-card img.image-focus-top,
+.showcase-card img.image-focus-top {
+  object-position: center top;
+}
+
+.page-hero-image img.image-focus-upper,
+.event-card img.image-focus-upper,
+.showcase-card img.image-focus-upper {
+  object-position: center 28%;
+}
+
+.page-hero-image img.image-focus-center,
+.event-card img.image-focus-center,
+.showcase-card img.image-focus-center {
+  object-position: center center;
+}
+
+.page-hero-image img.image-contain,
+.event-card img.image-contain,
+.showcase-card img.image-contain {
+  object-fit: contain;
+  background: var(--color-surface-soft);
+}
+
 .event-card-body {
   display: grid;
   gap: 0.85rem;
