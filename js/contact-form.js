@@ -98,7 +98,7 @@
       inquiryFallback.hidden = false;
       formStatus.textContent = "Inquiry prepared. Click Open Email App, or copy the inquiry details below.";
 
-      logger?.info("Opening mailto inquiry flow with fallback details prepared.", {
+      logger?.info("Prepared inquiry email details and updated the mailto fallback link.", {
         testingEmailAddress,
         eventType: formData.get("eventType"),
         eventDate: formData.get("eventDate"),
