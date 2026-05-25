@@ -22,6 +22,7 @@
     const images = normalizeBtsImages(btsItem);
     const carouselId = `bts-carousel-${btsIndex}`;
     const hasMultipleImages = images.length > 1;
+    const imageFitClassName = btsItem.imageFit === "contain" ? " bts-carousel-contain" : "";
 
     if (!images.length) {
       return `
@@ -54,7 +55,7 @@
       : `<span class="bts-carousel-count">1 / 1</span>`;
 
     return `
-      <div class="bts-carousel" id="${carouselId}" data-bts-carousel data-current-image-index="0" aria-label="${btsItem.title} image carousel">
+            <div class="bts-carousel${imageFitClassName}" id="${carouselId}" data-bts-carousel data-current-image-index="0" aria-label="${btsItem.title} image carousel">
         ${carouselSlides}
         ${controlsMarkup}
       </div>

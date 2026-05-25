@@ -19,6 +19,7 @@ window.SunsetSipsBtsItems = [
     images: [
       "../assets/images/bts/2025-09-26-bree-ryan.jpg"
     ],
+    imageFit: "contain",
     description: "A personal introduction to Bree, the girl behind the bar, and Ryan, the husband who builds the bars, hauls the heavy stuff, and keeps the operation moving.",
     detail: "A warm brand story moment that helps visitors connect with the people behind Sunset Sips."
   },

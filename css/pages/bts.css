@@ -51,6 +51,11 @@
   opacity: 1;
 }
 
+.bts-carousel-contain .bts-carousel-image {
+  object-fit: contain;
+  background: var(--color-surface-soft);
+}
+
 .bts-carousel-button {
   position: absolute;
   top: 50%;

@@ -16,18 +16,21 @@ Completed
 [x] Added reusable image focal-point helper classes and adjusted the Contact and About hero images to reduce awkward cropping.
 [x] Added Past Events image carousels and connected event cards to the extracted Reel thumbnail images.
 [x] Updated the BTS page to use organized BTS image assets and carousel controls for multi-photo behind-the-scenes stories.
+[x] Adjusted the Bree and Ryan BTS image to use a contained fit so the portrait is not cropped too tightly.
+[x] Extract event-specific thumbnail frames from each Reel/video and update data/past-events.js image paths.
+
 
 Next Tasks
 ----------
 [ ] Confirm the final domain name and update sitemap.xml, robots.txt, and canonical URLs.
 [ ] Replace testing email address with Bree's final inquiry destination when ready.
 [ ] Add more compressed event thumbnails as they become available.
-[x] Extract event-specific thumbnail frames from each Reel/video and update data/past-events.js image paths.
 [ ] Add real upcoming public events once Bree confirms what can be promoted.
 [ ] Add final review copy or screenshots after Bree approves them.
 [ ] Test the full site on mobile Safari, Chrome, and desktop before publishing.
 [ ] Deploy the first static version to Cloudflare Pages.
 [ ] Add lightweight analytics only if Bree wants traffic insights.
+
 
 Media Notes
 -----------
