@@ -2,8 +2,58 @@
   const logger = window.SunsetSipsLogger;
   const allFilterValue = "All";
 
+  function getEventImages(eventItem) {
+    if (Array.isArray(eventItem.images) && eventItem.images.length) {
+      return eventItem.images;
+    }
+
+    if (eventItem.image) {
+      return [eventItem.image];
+    }
+
+    logger?.warn("Past event was missing image data.", { title: eventItem.title });
+    return [];
+  }
+
+  function createCarouselMarkup(eventItem, eventImages) {
+    if (!eventImages.length) {
+      return "";
+    }
+
+    const imageSlides = eventImages.map((imagePath, imageIndex) => {
+      const activeClassName = imageIndex === 0 ? " is-active" : "";
+      const lazyLoading = imageIndex === 0 ? "eager" : "lazy";
+
+      return `
+        <img
+          class="event-carousel-image${activeClassName}"
+          src="${imagePath}"
+          alt="${eventItem.title} event preview ${imageIndex + 1} of ${eventImages.length}"
+          loading="${lazyLoading}"
+          data-carousel-image
+        >
+      `;
+    }).join("");
+
+    const controlsMarkup = eventImages.length > 1
+      ? `
+        <button class="event-carousel-button event-carousel-button-previous" type="button" data-carousel-direction="-1" aria-label="Show previous image for ${eventItem.title}">‹</button>
+        <button class="event-carousel-button event-carousel-button-next" type="button" data-carousel-direction="1" aria-label="Show next image for ${eventItem.title}">›</button>
+        <span class="event-carousel-count" data-carousel-count>1 / ${eventImages.length}</span>
+      `
+      : "";
+
+    return `
+      <div class="event-carousel" data-event-carousel>
+        ${imageSlides}
+        ${controlsMarkup}
+      </div>
+    `;
+  }
+
   function createEventCard(eventItem) {
     const eventCard = document.createElement("article");
+    const eventImages = getEventImages(eventItem);
     eventCard.className = "event-card reveal-on-scroll";
     eventCard.dataset.category = eventItem.category;
 
@@ -12,7 +62,7 @@
       : "";
 
     eventCard.innerHTML = `
-      <img src="${eventItem.image}" alt="${eventItem.title} event preview" loading="lazy">
+      ${createCarouselMarkup(eventItem, eventImages)}
       <div class="event-card-body">
         <div class="event-meta">
           <span class="pill">${eventItem.category}</span>
@@ -101,11 +151,68 @@
     });
   }
 
+  function showCarouselImage(carouselElement, nextImageIndex) {
+    const carouselImages = [...carouselElement.querySelectorAll("[data-carousel-image]")];
+    const carouselCount = carouselElement.querySelector("[data-carousel-count]");
+
+    if (!carouselImages.length) {
+      logger?.warn("Carousel navigation was requested but no carousel images were found.");
+      return;
+    }
+
+    const normalizedImageIndex = (nextImageIndex + carouselImages.length) % carouselImages.length;
+
+    carouselImages.forEach((carouselImage, imageIndex) => {
+      carouselImage.classList.toggle("is-active", imageIndex === normalizedImageIndex);
+    });
+
+    if (carouselCount) {
+      carouselCount.textContent = `${normalizedImageIndex + 1} / ${carouselImages.length}`;
+    }
+
+    logger?.info("Past event carousel image changed.", {
+      normalizedImageIndex,
+      carouselImageCount: carouselImages.length
+    });
+  }
+
+  function initializeCarouselControls() {
+    const eventsGrid = document.querySelector("[data-events-grid]");
+
+    if (!eventsGrid) {
+      logger?.warn("Past events grid was not found. Carousel controls were not initialized.");
+      return;
+    }
+
+    eventsGrid.addEventListener("click", (event) => {
+      const carouselButton = event.target.closest("[data-carousel-direction]");
+
+      if (!carouselButton) {
+        return;
+      }
+
+      const carouselElement = carouselButton.closest("[data-event-carousel]");
+      const carouselImages = [...carouselElement.querySelectorAll("[data-carousel-image]")];
+      const activeImageIndex = carouselImages.findIndex((carouselImage) => carouselImage.classList.contains("is-active"));
+      const direction = Number(carouselButton.dataset.carouselDirection);
+
+      if (!Number.isFinite(direction)) {
+        logger?.warn("Carousel direction was invalid.", { directionValue: carouselButton.dataset.carouselDirection });
+        return;
+      }
+
+      showCarouselImage(carouselElement, activeImageIndex + direction);
+    });
+
+    logger?.info("Past event carousel controls initialized.");
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const events = window.SunsetSipsPastEvents || [];
     renderFilterButtons(events);
     renderEvents(events);
     initializeFiltering();
+    initializeCarouselControls();
     document.dispatchEvent(new Event("sunset-sips:dynamic-content-ready"));
   });
 })();
