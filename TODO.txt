@@ -15,6 +15,7 @@ Completed
 [x] Updated the Contact page copy and inquiry logging to match the prepare-first email flow.
 [x] Added reusable image focal-point helper classes and adjusted the Contact and About hero images to reduce awkward cropping.
 [x] Added Past Events image carousels and connected event cards to the extracted Reel thumbnail images.
+[x] Added contained image fit support for selected Past Events carousels.
 [x] Updated the BTS page to use organized BTS image assets and carousel controls for multi-photo behind-the-scenes stories.
 [x] Adjusted the Bree and Ryan BTS image to use a contained fit so the portrait is not cropped too tightly.
 [x] Adjusted the Vision Comes to Life BTS carousel to use contained image fit so the build photos are not cropped too tightly.
@@ -22,7 +23,7 @@ Completed
 [x] Extract event-specific thumbnail frames from each Reel/video and update data/past-events.js image paths.
 [x] Replaced the duplicate Reviews page hero screenshot with a social proof summary card to avoid repeating the same review twice.
 [x] Simplified the Reviews page hero by removing the right-side card and keeping the social proof copy under the main headline.
-
+[x] Updated the Contact page hero image to use the Dirby drinks photo instead of the signature drinks menu image.
 
 Next Tasks
 ----------

@@ -28,6 +28,7 @@ window.SunsetSipsPastEvents = [
     image: "../assets/images/events/2026-01-11-meyer-social-wedding-reception-1.jpg",
     images: ["../assets/images/events/2026-01-11-meyer-social-wedding-reception-1.jpg", "../assets/images/events/2026-01-11-meyer-social-wedding-reception-2.jpg", "../assets/images/events/2026-01-11-meyer-social-wedding-reception-3.jpg", "../assets/images/events/2026-01-11-meyer-social-wedding-reception-4.jpg"],
     reelUrl: "https://www.facebook.com/reel/850513057747925",
+    imageFit: "contain",
     description: "The first event of the year was a beautiful wedding reception for Jesse and Karsyn at The Meyer Social, filled with love, laughter, and celebration energy.",
     highlight: "A strong example of bar service for receptions, venue events, and full-season wedding bookings.",
     tags: ["Wedding Reception", "The Meyer Social", "Cocktails"]

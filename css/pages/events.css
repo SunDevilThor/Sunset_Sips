@@ -19,6 +19,11 @@
   display: block;
 }
 
+.event-carousel-contain .event-carousel-image {
+  object-fit: contain;
+  background: var(--color-surface-soft);
+}
+
 .event-carousel-button {
   position: absolute;
   top: 50%;

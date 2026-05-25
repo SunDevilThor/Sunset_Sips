@@ -43,8 +43,10 @@
       `
       : "";
 
+    const imageFitClassName = eventItem.imageFit === "contain" ? " event-carousel-contain" : "";
+
     return `
-      <div class="event-carousel" data-event-carousel>
+      <div class="event-carousel${imageFitClassName}" data-event-carousel>
         ${imageSlides}
         ${controlsMarkup}
       </div>
