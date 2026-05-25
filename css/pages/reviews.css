@@ -2,36 +2,21 @@
   padding-bottom: var(--section-padding);
 }
 
-.reviews-hero-card {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-large);
-  padding: clamp(1.35rem, 4vw, 2.25rem);
-  background: color-mix(in srgb, var(--color-surface) 90%, transparent);
-  box-shadow: var(--shadow-soft);
+.page-hero-single {
+  grid-template-columns: minmax(0, 1fr);
 }
 
-.reviews-hero-card h2 {
-  margin-bottom: 1rem;
-  font-size: clamp(2rem, 4vw, 3.4rem);
+.page-hero-single .page-hero-copy {
+  max-width: 920px;
 }
 
-.reviews-proof-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.35rem;
+.page-hero-single .page-hero-copy h1 {
+  max-width: 10ch;
 }
 
-.reviews-proof-list span {
-  display: inline-flex;
-  align-items: center;
-  border: 1px solid var(--color-border);
-  border-radius: 999px;
-  padding: 0.45rem 0.75rem;
-  background: var(--color-accent-soft);
-  color: var(--color-heading);
-  font-size: 0.78rem;
-  font-weight: 800;
+.page-hero-single .page-hero-copy p:not(.eyebrow) {
+  max-width: 720px;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
 }
 
 .review-card img {

@@ -21,6 +21,8 @@ Completed
 [x] Adjusted the Reviews page hero screenshot to use a contained fit so the recommendation is not cropped too tightly.
 [x] Extract event-specific thumbnail frames from each Reel/video and update data/past-events.js image paths.
 [x] Replaced the duplicate Reviews page hero screenshot with a social proof summary card to avoid repeating the same review twice.
+[x] Simplified the Reviews page hero by removing the right-side card and keeping the social proof copy under the main headline.
+
 
 Next Tasks
 ----------
