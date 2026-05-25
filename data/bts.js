@@ -34,6 +34,7 @@ window.SunsetSipsBtsItems = [
       "../assets/images/bts/2024-12-15-bts-beginning-5.jpg",
       "../assets/images/bts/2024-12-15-bts-beginning-6.jpg"
     ],
+    imageFit: "contain",
     description: "A BTS moment showing how Bree's vision becomes a real event-ready setup through creativity, support, and hands-on work.",
     detail: "A great proof point for the care and personality that goes into each setup."
   }
