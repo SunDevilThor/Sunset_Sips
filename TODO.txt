@@ -18,6 +18,7 @@ Completed
 [x] Updated the BTS page to use organized BTS image assets and carousel controls for multi-photo behind-the-scenes stories.
 [x] Adjusted the Bree and Ryan BTS image to use a contained fit so the portrait is not cropped too tightly.
 [x] Adjusted the Vision Comes to Life BTS carousel to use contained image fit so the build photos are not cropped too tightly.
+[x] Adjusted the Reviews page hero screenshot to use a contained fit so the recommendation is not cropped too tightly.
 [x] Extract event-specific thumbnail frames from each Reel/video and update data/past-events.js image paths.
 
 
