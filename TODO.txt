@@ -20,7 +20,7 @@ Completed
 [x] Adjusted the Vision Comes to Life BTS carousel to use contained image fit so the build photos are not cropped too tightly.
 [x] Adjusted the Reviews page hero screenshot to use a contained fit so the recommendation is not cropped too tightly.
 [x] Extract event-specific thumbnail frames from each Reel/video and update data/past-events.js image paths.
-
+[x] Replaced the duplicate Reviews page hero screenshot with a social proof summary card to avoid repeating the same review twice.
 
 Next Tasks
 ----------
