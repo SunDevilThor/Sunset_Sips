@@ -1,10 +1,16 @@
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.82fr);
-  gap: clamp(2rem, 7vw, 5rem);
+  grid-template-columns: minmax(0, 0.96fr) minmax(280px, 0.78fr);
+  gap: clamp(2.75rem, 7vw, 5.75rem);
   align-items: center;
   min-height: calc(100vh - 5.25rem);
   padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.hero h1 {
+  max-width: 10.75ch;
+  font-size: clamp(3.25rem, 8vw, 6.6rem);
+  overflow-wrap: normal;
 }
 
 .hero-lead {

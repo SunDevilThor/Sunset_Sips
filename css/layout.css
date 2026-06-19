@@ -158,6 +158,22 @@
 
 .footer-grid a:hover { color: var(--color-accent-strong); }
 
+.footer-social-link,
+.footer-icon-link {
+  display: flex !important;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+}
+
+.footer-social-icon,
+.footer-contact-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
 .footer-brand {
   margin-bottom: 0.25rem;
   color: var(--color-heading);

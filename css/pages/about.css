@@ -1,5 +1,30 @@
-.about-story { padding-bottom: var(--section-padding); }
+.about-story {
+    padding-bottom: var(--section-padding);
+}
 
-.about-story .content-card { max-width: 860px; }
+.about-story .content-card {
+    max-width: 860px;
+}
 
-.about-story p { font-size: 1.05rem; }
+.about-story p {
+    font-size: 1.05rem;
+}
+
+.about-page .page-hero-image {
+    justify-self: end;
+    width: min(100%, 430px);
+}
+
+.about-page .page-hero-image img.image-contain {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    object-position: center 36%;
+    background: transparent;
+}
+
+@media (max-width: 760px) {
+    .about-page .page-hero-image {
+        justify-self: center;
+        width: min(100%, 380px);
+    }
+}
